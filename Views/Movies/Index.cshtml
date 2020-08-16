@@ -1,0 +1,30 @@
+﻿@model MovieRentaMVC.ViewModel.MovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+<a href="Movies/New" class="btn btn-primary">New Movie</a>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Movies</td>
+        <td>Genre</td>
+    </tr>
+    <tbody>
+        @{ 
+            var movies = Model.movies;
+            var genres = Model.genre;
+            foreach (var movie in movies)
+            {
+                <tr>
+                    <td><a href="/Movies/Edit/@movie.Id">@movie.Name</a></td>
+                    <td>@genres[movie.genreId-1].Name</td>
+                </tr>
+            }
+         }
+    </tbody>
+</table>
+
